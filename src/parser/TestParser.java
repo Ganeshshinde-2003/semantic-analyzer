@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import ast.Program;
-import parser.Parser;
 import visitor.PrintVisitor;
 
 public class TestParser {

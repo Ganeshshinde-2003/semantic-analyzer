@@ -28,7 +28,6 @@ import ast.MoreThanEqual;
 import ast.NotEqual;
 import ast.Type;
 import ast.VarDecl;
-import lexer.TokenType;
 import parser.Parser;
 
 public class SemanticAnalyzer {

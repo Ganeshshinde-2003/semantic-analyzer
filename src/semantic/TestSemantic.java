@@ -3,7 +3,6 @@ package semantic;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import semantic.SemanticAnalyzer;
 
 public class TestSemantic {
 	public static void main(String[] args) throws IOException {

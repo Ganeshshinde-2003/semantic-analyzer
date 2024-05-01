@@ -4,10 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import lexer.Lexer;
-import lexer.Token;
-import lexer.TokenType;
-
 public class TestLexer {
 	public static void main(String[] args) throws IOException {
 		if (args.length == 0)
