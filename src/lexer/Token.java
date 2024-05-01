@@ -28,15 +28,4 @@ public class Token {
 	public int getColumnNumber(){
 		return columnNumber;
 	}
-
-	@Override
-	public String toString() {
-		return "Token{" +
-				"type=" + type +
-				", attribute=" + attribute +
-				", lineNumber=" + lineNumber +
-				", columnNumber=" + columnNumber +
-				'}';
-	}
-	
 }

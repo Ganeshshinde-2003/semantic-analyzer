@@ -1,41 +1,34 @@
 package semantic;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class TestSemantic {
-	public static void main(String[] args) throws IOException {
-		if (args.length == 0)
-			System.err.println("No file arguments givens");
-		else {
-			// parse each file argument given
-			for (int i = 0; i < args.length; i++) {
-				FileReader file;
-				
-				// attempt to open file
-				try {
-					file = new FileReader(args[i]);
-				} catch (FileNotFoundException e) {
-					System.err.println(args[i] + " was not found!");
-					continue; // try next file
-				}
-				
-				// create semantic analyzer
-				SemanticAnalyzer semantic = new SemanticAnalyzer(file);
-				System.out.println("Analyzing " + args[i] + "...");
-				
-				// initiate parse and clock time
-				long startTime = System.currentTimeMillis();
-				semantic.analyzeProgram();
-				long endTime = System.currentTimeMillis();
-				
-				// print out statistics
-				System.out.println("File has finished analyzing!");
-				System.out.println("Execution time: " + (endTime - startTime) + "ms");
-				System.out.println(semantic.getErrors() + " errors reported");
-				System.out.println("---");
-			}
-		}
-	}
+    public static String performAnalysis(String filePath) throws IOException {
+        File file = new File(filePath);
+
+        if (!file.exists()) {
+            return filePath + " was not found!";
+        }
+
+        try (FileReader reader = new FileReader(file)) {
+            SemanticAnalyzer semantic = new SemanticAnalyzer(reader);
+            semantic.analyzeProgram();
+
+            long startTime = System.currentTimeMillis();
+            long endTime;
+
+            endTime = System.currentTimeMillis();
+            String result = "File has finished analyzing!\n" +
+                            "Execution time: " + (endTime - startTime) + "ms\n" +
+                            semantic.getErrors() + " errors reported\n---";
+
+            return result;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return "Error occurred while analyzing the file.";
+        }
+    }
 }
